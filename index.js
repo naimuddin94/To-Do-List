@@ -11,6 +11,7 @@ document.getElementById("task-btn").addEventListener("click", function () {
 
 const tbody = document.getElementById("content-container");
 
+
 function render() {
   tbody.innerHTML = "";
   for (let i = 0; i < todos.length; i++) {
@@ -31,6 +32,9 @@ function render() {
 
 tbody.addEventListener("click", function (event) { 
   if (event.target.tagName === "BUTTON") {
-    console.log(tbody.children[0]);
+    const item = event.target.parentElement.parentElement.children[0];
+    const index = parseInt(item.innerText)
+    todos.splice(index - 1, 1);
+    render(); 
   }
 });
